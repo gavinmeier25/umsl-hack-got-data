@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import {
@@ -15,7 +15,7 @@ const ContactInfoCard = (props) => {
       <Paper className={classes.paper}>
         <Card className={classes.card}>
           <div className={classes.details}>
-            <CardContent className={classes.content}>
+            <CardContent>
               <Typography component="h5" variant="h5">
                 {`${lastName}, ${firstName}`}
               </Typography>
@@ -43,7 +43,7 @@ export default withStyles({
     flexDirection: "column"
   },
   paper: {
-    midWidth: 250,
+    minWidth: 250,
     maxWidth: 250,
     margin: 16
   }
