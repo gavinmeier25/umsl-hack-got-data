@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Paper, InputBase, Divider, IconButton, Card, Typography } from '@material-ui/core';
-import { Send } from '@material-ui/icons';
+import {withStyles} from '@material-ui/core/styles';
+import {Divider, IconButton, InputBase, Paper, Typography} from '@material-ui/core';
+import {Send} from '@material-ui/icons';
 import PostsList from './PostsList'
 
 const styles = {
@@ -37,15 +37,30 @@ const styles = {
 };
 
 const mockPosts=[
-    {post:'Bacon ipsum dolor amet ground round short loin buffalo pork chop tenderloin beef ribs beef bresaola. Jerky burgdoggen landjaeger kevin tenderloin. T-bone landjaeger shank burgdoggen brisket boudin turducken capicola ground round kielbasa spare ribs fatback bresaola chicken ham. Strip steak beef ribs filet mignon venison andouille chuck prosciutto short loin turducken sausage beef. Shoulder biltong sausage kielbasa, cupim boudin turducken flank cow pancetta frankfurter shankle beef ribs andouille fatback. Ham pork beef ribs sirloin.', date: Date},
-    {post:'Swine pork tail drumstick strip steak pastrami. Picanha ham venison ham hock, sausage pig t-bone short ribs corned beef prosciutto tongue porchetta rump capicola buffalo.', date: Date}
+    {
+        post: 'Bacon ipsum dolor amet ground round short loin buffalo pork chop tenderloin beef ribs beef bresaola. Jerky burgdoggen landjaeger kevin tenderloin. T-bone landjaeger shank burgdoggen brisket boudin turducken capicola ground round kielbasa spare ribs fatback bresaola chicken ham. Strip steak beef ribs filet mignon venison andouille chuck prosciutto short loin turducken sausage beef. Shoulder biltong sausage kielbasa, cupim boudin turducken flank cow pancetta frankfurter shankle beef ribs andouille fatback. Ham pork beef ribs sirloin.',
+        date: Date.toString()
+    },
+    {
+        post: 'Swine pork tail drumstick strip steak pastrami. Picanha ham venison ham hock, sausage pig t-bone short ribs corned beef prosciutto tongue porchetta rump capicola buffalo.',
+        date: Date.toString()
+    }
 
 ]
 
 
 function PostComponent(props) {
     const { classes } = props;
+
     const [post, setPost] = useState('');
+
+
+    async function handleSubmit() {
+        await mockPosts.push({post: post, date: Date});
+        console.log(mockPosts);
+
+    }
+
 
 
     
@@ -54,15 +69,17 @@ function PostComponent(props) {
         <div className={classes.posts}>
             <Typography className={classes.header} variant="h5"><b>Posts</b></Typography>
             <Paper className={classes.root} elevation={1}>
-                <InputBase className={classes.input} placeholder="Write something..."/>
+                    <InputBase className={classes.input} placeholder="Write something..." name="post" id="post"
+                               onChange={(e) => setPost(e.target.value)}/>
                 <Divider className={classes.divider} />
-                <IconButton color="primary" className={classes.iconButton} aria-label="Send" onClick={()=>setPost(post)}>
+                    <IconButton color="primary" className={classes.iconButton} aria-label="Send"
+                                onClick={(e) => handleSubmit(e, post)}>
                 {console.log(mockPosts)}
                     <Send />
                 </IconButton>
             </Paper>
             <Divider/>
-            <PostsList post={mockPosts[0].post} date={mockPosts[0].date}></PostsList>
+            <PostsList post={mockPosts}/>
         </div>
     );
 }
