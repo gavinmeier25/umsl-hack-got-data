@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Card, List, ListItem, ListItemText, Avatar, Divider } from '@material-ui/core';
-import map from 'lodash'
-import { KeyboardArrowRight } from '@material-ui/icons';
+import {withStyles} from '@material-ui/core/styles';
+import {Card, Divider, List, ListItem, ListItemText} from '@material-ui/core';
+import {KeyboardArrowRight} from '@material-ui/icons';
+import map from 'lodash';
 
 const styles = theme => ({
   root: {
@@ -23,16 +23,21 @@ const styles = theme => ({
 
 
 function PostsList(props) {
-  const { classes, post, date } = props;
-  console.log(props)
+  const { classes, post } = props;
+    console.log('props post: ', props.post.post);
   return (
-    
+
     <List className={classes.root}>
       <Card>
-          <ListItem>
-          <KeyboardArrowRight/>
-          <ListItemText primary={post} secondary={date}/>
-        </ListItem>
+          {post.map ((p) => {
+              return(
+              <ListItem>
+                  <KeyboardArrowRight/>
+                  <ListItemText primary={p.post}/>
+              </ListItem>
+              )
+          })}
+
       </Card>
       <Divider />
     </List>
