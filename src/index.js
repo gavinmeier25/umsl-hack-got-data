@@ -2,8 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
+import PostsList from './components/PostsList';
 
-const App = () => <div className='App'>hack</div>
+const App = () => <div className='App'>
+<PostsList></PostsList></div>
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
