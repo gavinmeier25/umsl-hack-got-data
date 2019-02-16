@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, List, ListItem, ListItemText, Avatar, Divider } from '@material-ui/core';
+import map from 'lodash'
+import { KeyboardArrowRight } from '@material-ui/icons';
 
 const styles = theme => ({
   root: {
@@ -22,16 +24,14 @@ const styles = theme => ({
 
 function PostsList(props) {
   const { classes, post, date } = props;
+  console.log(props)
   return (
     
     <List className={classes.root}>
       <Card>
-        <ListItem>
-          <Avatar>
-            A
-            </Avatar>
-          <hr></hr>
-          <ListItemText key={props} primary={post} secondary={date} />
+          <ListItem>
+          <KeyboardArrowRight/>
+          <ListItemText primary={post} secondary={date}/>
         </ListItem>
       </Card>
       <Divider />
