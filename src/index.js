@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker'
 import PostsList from './components/PostsList';
 
 const App = () => <div className='App'>
-<PostsList></PostsList></div>
+hack</div>
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
